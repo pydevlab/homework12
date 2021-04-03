@@ -31,11 +31,7 @@ pipeline {
       }
       stage('Deploy to staging') {
           steps {
-              sh "docker pull pydevlab/testbuild:latest"
-	      sh "docker stop testbuild"
-	      sh "docker rmi pydevlab/testbuild:current"
-	      sh "docker tag pydevlab/testbuild:latest pydevlab/testbuild:current" 
-	      sh "docker run -d --rm -p 80:8000 --name testbuild pydevlab/testbuild:current"	
+	      sh "docker-compose up -d"	
         }
      }
 	  
