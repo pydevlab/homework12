@@ -8,7 +8,7 @@ pipeline {
   stages {
       stage('Cloning git repository') {
           steps {
-              git 'https://github.com/pydevlab/homework12.git'
+              git branch: 'main', url: 'https://github.com/pydevlab/homework12.git'
           }
       }
       stage('Building image') {
