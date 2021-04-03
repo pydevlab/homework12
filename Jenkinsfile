@@ -23,10 +23,17 @@ pipeline {
               script {
                   docker.withRegistry( '', registryCredential ) {
                       dockerImage.push()
-                      dockerImage.push('latest')
+					  dockerImage.push('latest')
+ 
                   }
               }
           }
       }
+      stage('Deploy to staging') {
+          steps {
+              sh "docker run -d --rm -p 80:8000 --name testbuild pydevlab/testbuild:latest"
+        }
+     }
+	  
   }
 }
